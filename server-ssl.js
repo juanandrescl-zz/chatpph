@@ -6,8 +6,8 @@ const siofu = require('socketio-file-upload')
 
 // replace below key with your own server files
 var options = {
-  key: fs.readFileSync(path.resolve('certs/certificate.key ')),
-  cert: fs.readFileSync(path.resolve('certs/certificate.crt'))
+  key: fs.readFileSync(path.resolve('./certs/certificate.key ')),
+  cert: fs.readFileSync(path.resolve('./certs/certificate.crt'))
 }
 
 var clients = {}
@@ -22,10 +22,10 @@ https.listen(3000, function () {
 
 io.on('connection', function (socket) {
   // Socket File Upload
-  fs.mkdir(path.resolve('uploads/chat_attachments'))
+  fs.mkdir(path.resolve('./uploads/chat_attachments'))
   var uploader = new siofu()
   uploader.mode = '0666'
-  uploader.dir = path.resolve('uploads/chat_attachments')
+  uploader.dir = path.resolve('./uploads/chat_attachments')
 
   uploader.listen(socket)
   uploader.on('saved', function (event) {
