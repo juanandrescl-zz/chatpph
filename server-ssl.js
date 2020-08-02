@@ -4,13 +4,15 @@ var path = require('path')
 var fs = require('file-system')
 const siofu = require('socketio-file-upload')
 
+console.log('aca')
+console.log(path.resolve(__dirname))
+
 // replace below key with your own server files
 var options = {
   key: fs.readFileSync(path.resolve('./certs/certificate.key ')),
   cert: fs.readFileSync(path.resolve('./certs/certificate.crt'))
 }
-console.log('aca')
-console.log(path.resolve(__dirname))
+
 var clients = {}
 var connected_users = []
 var https = require('https').createServer(options, app)
