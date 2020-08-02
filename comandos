@@ -1,0 +1,4 @@
+ git add .
+ git commit -m "initial commit 2"
+ git push -f origin master
+ heroku logs -a chatpph  --tail
