@@ -24,6 +24,8 @@ https.listen(3000, function () {
 })
 
 io.on('connection', function (socket) {
+  console.log('socket')
+  console.log(socket)
   // Socket File Upload
   fs.mkdir(path.resolve('./uploads/chat_attachments'))
   var uploader = new siofu()
@@ -32,12 +34,15 @@ io.on('connection', function (socket) {
 
   uploader.listen(socket)
   uploader.on('saved', function (event) {
+    console.log('saved')
+    console.log(event)
     event.file.clientDetail.filename = event.file.base
     event.file.clientDetail.fileext = path.extname(event.file.name)
   })
 
   // add new user's id to socket.
   socket.on('add-user', function (data) {
+    console.log('add user')
     console.log(data)
     clients[data.userId] = {
       'socket': socket.id
@@ -48,6 +53,7 @@ io.on('connection', function (socket) {
 
   // sending messsages to require person
   socket.on('send_msg', function (data) {
+    console.log('send_msg')
     console.log(data)
     if (clients[data.user_id]) {
       io.sockets.connected[clients[ data.user_id ].socket].emit('send_msg', data)
@@ -58,7 +64,8 @@ io.on('connection', function (socket) {
 
   // sending history messages
   socket.on('send_history_msg', function (data) {
-    console.log(clients)
+    console.log('data')
+    console.log(data)
     if (clients[data.user_id]) {
       io.sockets.connected[clients[ data.user_id ].socket].emit('send_history_msg', data)
     } else {
@@ -67,6 +74,8 @@ io.on('connection', function (socket) {
   })
 
   socket.on('send_files', function (data) {
+    console.log('send_files')
+    console.log(data)
     if (clients[data.user_id]) {
       io.sockets.connected[clients[ data.user_id ].socket].emit('send_files', data)
     } else {
@@ -76,6 +85,8 @@ io.on('connection', function (socket) {
 
   // Removing the socket on disconnect
   socket.on('disconnect', function () {
+    console.log('disconnect')
+
     for (var name in clients) {
       if (clients[name].socket === socket.id) {
         delete clients[name]
