@@ -20,8 +20,9 @@ var io = require('socket.io')(https)
 
 // chat port listens
 // https.listen(3000, function () {
-https.listen(process.env.PORT, function () {
-  console.log('listening on *:3000')
+const PORT = process.env.PORT || 3000
+https.listen(PORT, function () {
+  console.log('listening @ *:' + PORT)
 })
 
 io.on('connection', function (socket) {
