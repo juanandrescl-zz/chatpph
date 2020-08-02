@@ -9,7 +9,8 @@ var options = {
   key: fs.readFileSync(path.resolve('./certs/certificate.key ')),
   cert: fs.readFileSync(path.resolve('./certs/certificate.crt'))
 }
-
+console.log('aca')
+console.log(path.resolve(__dirname))
 var clients = {}
 var connected_users = []
 var https = require('https').createServer(options, app)
