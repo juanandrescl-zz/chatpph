@@ -6,8 +6,8 @@ const siofu = require('socketio-file-upload')
 
 // replace below key with your own server files
 var options = {
-  key: fs.readFileSync(path.resolve('./certs/certificate.key ')),
-  cert: fs.readFileSync(path.resolve('./certs/certificate.crt'))
+  key: fs.readFileSync(path.resolve('certs/certificate.key ')),
+  cert: fs.readFileSync(path.resolve('certs/certificate.crt'))
 }
 
 var clients = {}
