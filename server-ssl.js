@@ -38,7 +38,7 @@ io.on('connection', function (socket) {
 
   // add new user's id to socket.
   socket.on('add-user', function (data) {
-    // console.log(data)
+     console.log(data)
     clients[data.userId] = {
       'socket': socket.id
     }
@@ -48,7 +48,7 @@ io.on('connection', function (socket) {
 
   // sending messsages to require person
   socket.on('send_msg', function (data) {
-    // console.log('data)
+     console.log('data)
     if (clients[data.user_id]) {
       io.sockets.connected[clients[ data.user_id ].socket].emit('send_msg', data)
     } else {
