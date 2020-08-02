@@ -9,7 +9,7 @@ console.log(path.resolve(__dirname))
 
 // replace below key with your own server files
 var options = {
-  key: fs.readFileSync(path.resolve('./certs/certificate.key ')),
+  key: fs.readFileSync(path.resolve('./certs/certificate.key')),
   cert: fs.readFileSync(path.resolve('./certs/certificate.crt'))
 }
 
