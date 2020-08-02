@@ -19,7 +19,8 @@ var https = require('https').createServer(options, app)
 var io = require('socket.io')(https)
 
 // chat port listens
-https.listen(3000, function () {
+// https.listen(3000, function () {
+https.listen(process.env.PORT, function () {
   console.log('listening on *:3000')
 })
 
